@@ -48,6 +48,16 @@ public class ContinuumBuilder
 	}//end method createPhysicsContinua
 	
 	/**
+	 * This method deletes a physics continuum from the simulation
+	 * @param physicsName
+	 */
+	public void deletePhysicsContinuum(String physicsName)
+	{
+		PhysicsContinuum physics = (PhysicsContinuum) m_sim.getContinuumManager().getContinuum(physicsName);
+		m_sim.getContinuumManager().remove(physics);
+	}
+	
+	/**
 	 * This method sets the physics of a specified region
 	 * @param regionName
 	 * @param physicsName

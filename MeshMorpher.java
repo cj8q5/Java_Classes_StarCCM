@@ -65,5 +65,15 @@ public class MeshMorpher
 		MovingMeshSolver movingMeshSolver = ((MovingMeshSolver) m_sim.getSolverManager().getSolver(MovingMeshSolver.class));
 		movingMeshSolver.setSolveInnerIterations(onOrOff);
 	}
+	
+	/**
+	 * This method turns morph from zero on or off
+	 * @param onOrOff
+	 */
+	public void setMorphFromZero(boolean onOrOff)
+	{
+		MovingMeshSolver movingMeshSolver = ((MovingMeshSolver) m_sim.getSolverManager().getSolver(MovingMeshSolver.class));
+		movingMeshSolver.setMorphFromZero(onOrOff);
+	}
 }
 
