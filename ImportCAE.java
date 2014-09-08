@@ -1,9 +1,9 @@
+package starClasses;
 /** This java script is to be run using the FSI_Abaqus_StarCCM.py python script within Star-CCM+
  * 		Written by Casey J. Jesse on June 2014 at the University of Missouri - Columbia	
  * 		Revisions:
  *			
  */
-package starClasses;
 
 import star.base.neo.*;
 import star.common.*;

@@ -8,27 +8,18 @@ import star.common.Simulation;
 import star.cosimulation.abaqus.*;
 import star.cosimulation.common.*;
 
-public class CoSimulationAbaqus 
+public class CoSimulationAbaqus_9_02_007 
 {
-	private String m_version;
 	private Simulation m_sim;
 	private Region m_region;
 	private AbaqusCoSimulation m_abaqusCoSimulation;
 	
-	public CoSimulationAbaqus(String starVersion, Simulation sim, String regionName)
+	public CoSimulationAbaqus_9_02_007(Simulation sim, String regionName)
 	{
-		m_version = starVersion;
 		m_sim = sim;
 		m_region = m_sim.getRegionManager().getRegion(regionName);
 		
-		if(m_version.equals("8_04"))
-		{
-			m_abaqusCoSimulation = m_sim.get(CoSimulationManager.class).createCoSimulation(AbaqusCoSimulation.class, "Abaqus Co-Simulation");
-		}
-		else if(m_version.equals("9_02"))
-		{
-			m_abaqusCoSimulation = ((AbaqusCoSimulation) m_sim.get(CoSimulationManager.class).getObject("Abaqus Co-Simulation 1"));
-		}
+		m_abaqusCoSimulation = m_sim.get(CoSimulationManager.class).createCoSimulation(AbaqusCoSimulation.class, "Abaqus Co-Simulation");
 		
 		PrimitiveFieldFunction primitiveFieldFunction_0 = ((PrimitiveFieldFunction) m_sim.getFieldFunctionManager().getFunction("StaticPressure"));
 	    PrimitiveFieldFunction primitiveFieldFunction_1 = ((PrimitiveFieldFunction) m_sim.getFieldFunctionManager().getFunction("WallShearStress"));
@@ -48,7 +39,7 @@ public class CoSimulationAbaqus
 		for(int i = 0; i < boundaryNames.length; i++)
 		{
 			Boundary boundary = m_region.getBoundaryManager().getBoundary(boundaryNames[i]);
-			m_abaqusCoSimulation.getCouplingSurfaces().addObjects(boundary);
+			m_abaqusCoSimulation.getCouplingSurfaces().setObjects(boundary);
 		}
 	}
 	
@@ -128,11 +119,11 @@ public class CoSimulationAbaqus
 	/**
 	 * This method sets mapper's tolerance settings
 	 * @param normalTolerance
-	 * @param perimeterTolerance
 	 */
-	public void setMapperTolSettings(double normalTolerance, double perimeterTolerance)
+	public void setMapperTolSettings(double normalTolerance)
 	{
 		MapperSettings mapperSettings = m_abaqusCoSimulation.getMapperSettings();
 		mapperSettings.setMapperProximityTol(normalTolerance);
 	}
+
 }

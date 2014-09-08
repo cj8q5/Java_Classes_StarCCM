@@ -16,20 +16,20 @@ import star.motion.MotionSpecification;
 public class MeshMorpher 
 {
 	private Simulation m_sim;
-	private MorphingMotion m_mesher;
+	private MorphingMotion m_motion;
 	private PrimitiveFieldFunction m_fieldFunction;
 	private Region m_region;
 	
 	public MeshMorpher(Simulation sim, String regionName)
 	{
 		m_sim = sim;
-		m_mesher = m_sim.get(MotionManager.class).createMotion(MorphingMotion.class, "Morphing");
-		m_mesher.getMorphOrderOption().setSelected(MorphOrderOption.REGIONWISE);
+		m_motion = m_sim.get(MotionManager.class).createMotion(MorphingMotion.class, "Morphing");
+		m_motion.getMorphOrderOption().setSelected(MorphOrderOption.REGIONWISE);
 		
 		m_region = m_sim.getRegionManager().getRegion(regionName);
 		
 		MotionSpecification motionSpecification = m_region.getValues().get(MotionSpecification.class);
-	    motionSpecification.setMotion(m_mesher);
+	    motionSpecification.setMotion(m_motion);
 	}
 	
 	/** This method adds a boundary to the mesh morpher solver
@@ -66,3 +66,4 @@ public class MeshMorpher
 		movingMeshSolver.setSolveInnerIterations(onOrOff);
 	}
 }
+

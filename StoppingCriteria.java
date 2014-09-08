@@ -259,3 +259,4 @@ public class StoppingCriteria
 	}// end of method maxSteps
 	
 }//end class StoppingCriteria
+

@@ -11,11 +11,12 @@ import star.common.Coordinate;
 import star.common.InternalDataSet;
 import star.common.MonitorNormalizeOption;
 import star.common.MonitorPlot;
-import star.common.MonitorTriggerOption;
 import star.common.Region;
 import star.common.ResidualMonitor;
 import star.common.Simulation;
 import star.common.StarPlot;
+import star.common.StarUpdate;
+import star.common.StarUpdateModeOption;
 import star.common.Units;
 import star.common.XYPlot;
 import star.common.YAxisType;
@@ -227,15 +228,18 @@ public class ReportsMonitorsPlots
 		{
 			MinReport minReport = ((MinReport) m_sim.getReportManager().getReport(reportNames[0]));
 			ReportMonitor reportMonitor_0 = minReport.createMonitor();
-			reportMonitor_0.getTriggerOption().setSelected(MonitorTriggerOption.ITERATION);
+			StarUpdate starUpdate_0 = reportMonitor_0.getStarUpdate();
+			starUpdate_0.getUpdateModeOption().setSelected(StarUpdateModeOption.ITERATION);
 
 			MaxReport maxReport = ((MaxReport) m_sim.getReportManager().getReport(reportNames[1]));
 			ReportMonitor reportMonitor_1 = maxReport.createMonitor();
-			reportMonitor_1.getTriggerOption().setSelected(MonitorTriggerOption.ITERATION);
+			StarUpdate starUpdate_1 = reportMonitor_1.getStarUpdate();
+			starUpdate_1.getUpdateModeOption().setSelected(StarUpdateModeOption.ITERATION);
 			
 			AreaAverageReport aveReport = ((AreaAverageReport) m_sim.getReportManager().getReport(reportNames[2]));
 			ReportMonitor reportMonitor_2 = aveReport.createMonitor();
-			reportMonitor_2.getTriggerOption().setSelected(MonitorTriggerOption.ITERATION);
+			StarUpdate starUpdate_2 = reportMonitor_2.getStarUpdate();
+			starUpdate_2.getUpdateModeOption().setSelected(StarUpdateModeOption.ITERATION);
 			
 			MonitorPlot monitorPlot = m_sim.getPlotManager().createMonitorPlot();
 		    monitorPlot.setPresentationName(plotName);
@@ -249,11 +253,13 @@ public class ReportsMonitorsPlots
 		{
 			AreaAverageReport aveReport_0 = ((AreaAverageReport) m_sim.getReportManager().getReport(reportNames[0]));
 			ReportMonitor reportMonitor_0 = aveReport_0.createMonitor();
-			reportMonitor_0.getTriggerOption().setSelected(MonitorTriggerOption.ITERATION);
+			StarUpdate starUpdate_0 = reportMonitor_0.getStarUpdate();
+			starUpdate_0.getUpdateModeOption().setSelected(StarUpdateModeOption.ITERATION);
 			
 			AreaAverageReport aveReport_1 = ((AreaAverageReport) m_sim.getReportManager().getReport(reportNames[1]));
 		    ReportMonitor reportMonitor_1 = aveReport_1.createMonitor();
-			reportMonitor_1.getTriggerOption().setSelected(MonitorTriggerOption.ITERATION);
+		    StarUpdate starUpdate_1 = reportMonitor_1.getStarUpdate();
+			starUpdate_1.getUpdateModeOption().setSelected(StarUpdateModeOption.ITERATION);
 
 		    MonitorPlot monitorPlot_1 = m_sim.getPlotManager().createMonitorPlot();
 		    monitorPlot_1.setPresentationName(plotName);
